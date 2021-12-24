@@ -19,9 +19,9 @@ package com.cybozu.labs.langdetect;
 
 import com.cybozu.labs.langdetect.util.LangProfile;
 import org.elasticsearch.common.io.FileSystemUtils;
-import org.elasticsearch.xcontent.DeprecationHandler;
-import org.elasticsearch.xcontent.NamedXContentRegistry;
-import org.elasticsearch.xcontent.XContentType;
+import org.elasticsearch.common.xcontent.DeprecationHandler;
+import org.elasticsearch.common.xcontent.NamedXContentRegistry;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.env.Environment;
 
 import java.io.IOException;
@@ -47,6 +47,7 @@ import java.util.Map;
  * Does not use jsonic either as it would use reflection and again require additional permissions
  *
  * Needs to be in this package in order to call DetectorFactory.addProfile()
+ * @author zengshenw
  */
 public class SecureDetectorFactory {
 
@@ -59,7 +60,7 @@ public class SecureDetectorFactory {
             Files.copy(in, tmp, StandardCopyOption.REPLACE_EXISTING);
         }
         FileSystem fileSystem =
-                FileSystems.newFileSystem(new URI("jar:" + tmp.toAbsolutePath().toUri().toString()), Collections.emptyMap());
+                FileSystems.newFileSystem(new URI("jar:" + tmp.toAbsolutePath().toUri()), Collections.emptyMap());
 
         DirectoryStream<Path> ds = Files.newDirectoryStream(fileSystem.getPath("profiles/"));
         Iterator<Path> iter = ds.iterator();
@@ -87,8 +88,9 @@ public class SecureDetectorFactory {
         LangProfile langProfile = new LangProfile();
         List<Integer> nWords = (List<Integer>) data.get("n_words");
         langProfile.n_words = new int[nWords.size()];
-        for(int i = 0;i < langProfile.n_words.length;i++)
+        for(int i = 0;i < langProfile.n_words.length;i++) {
             langProfile.n_words[i] = nWords.get(i);
+        }
 
         langProfile.name = (String) data.get("name");
         langProfile.freq = (HashMap<String, Integer>) data.get("freq");
