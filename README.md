@@ -95,12 +95,6 @@ GET /my-index/my-type/1
 }
 ```
 
-### Elasticsearch模型使用插件配置
-
-数据模块的Elasticsearch模型如若需要使用本插件提取markdown文件的纯文本信息，需要在模型字段上做如下设置。
-1. 设置模型字段的**字段角色**为markdown。
-2. 设置模型字段**ES附件处理插件名称**为自定义插件的名称，本项目插件的名称为`markdown`，默认为`attachment`。
-
 ## 自定义生成插件包
 
 在[常见版本插件包](#常见版本插件包)列表中未找到对应版本的插件包时，可以遵循以下步骤自行生成插件包。
@@ -116,11 +110,11 @@ zip文件位于**build/distributions** 目录下。
 
 ## 常见版本插件包
 
-| ES     | location                                                   |
-|--------|------------------------------------------------------------|
-| 7.16.1 | `build/distribution/ingest-markdown-7.16.1.1-SNAPSHOT.zip` |
-| 7.16.0 | `build/distribution/ingest-markdown-7.16.0.1-SNAPSHOT.zip` |
-| 7.15.1 | `build/distribution/ingest-markdown-7.15.1.1-SNAPSHOT.zip` |
-| 7.15.0 | `build/distribution/ingest-markdown-7.15.0.1-SNAPSHOT.zip` |
-| 7.12.1 | `build/distribution/ingest-markdown-7.12.1.1-SNAPSHOT.zip` |
-| 7.12.0 | `build/distribution/ingest-markdown-7.12.0.1-SNAPSHOT.zip` |
+| ES     | location                                       |
+|--------|------------------------------------------------|
+| 7.16.2 | `plugin/ingest-markdown-7.16.2.1-SNAPSHOT.zip` |
+| 7.16.1 | `plugin/ingest-markdown-7.16.1.1-SNAPSHOT.zip` |
+| 7.16.0 | `plugin/ingest-markdown-7.16.0.1-SNAPSHOT.zip` |
+| 7.15.2 | `plugin/ingest-markdown-7.15.2.1-SNAPSHOT.zip` |
+| 7.15.1 | `plugin/ingest-markdown-7.15.1.1-SNAPSHOT.zip` |
+| 7.15.0 | `plugin/ingest-markdown-7.15.0.1-SNAPSHOT.zip` |
